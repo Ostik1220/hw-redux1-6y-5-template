@@ -1,42 +1,46 @@
 import { Component } from "react";
+import { getContacts, getFilter } from "../redux/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import { filterContact, removeContact } from "../redux/actions";
 
-class ContactList extends Component {
-  state = {
-    filter: "",
+const ContactList = () => {
+  // state = {
+  //   filter: "",
+  // };
+
+  const contacts =  useSelector(getContacts);
+const filter = useSelector(getFilter)
+  console.log(contacts, filter)
+
+    const dispatch = useDispatch();
+  
+
+  const valueCollector = (event) => {
+    dispatch(filterContact(event.target.value))
   };
 
-  valueCollector = (event) => {
-    this.setState({
-      filter: event.target.value,
-    });
-    console.log(this.state.filter);
+  const deletionHandler = (contactId) => {
+    console.log(contactId);
+    dispatch(removeContact(contactId));
   };
 
-  deletionHandler = (event) => {
-    const contactToDelete = event.target.parentNode.firstChild.textContent;
-    console.log(contactToDelete);
-    this.props.deleteFunction(contactToDelete);
-  };
-
-  render() {
     return (
       <>
-        <input type="text" onChange={this.valueCollector} />
+        <input type="text" onChange={valueCollector} />
         <ul>
-          {this.props.contacts.map((contact) =>
+          {contacts.map((contact) =>
             contact.name
               .toLowerCase()
-              .includes(this.state.filter.toLowerCase()) ? (
+              .includes(filter.toLowerCase()) ? (
               <li key={contact.id}>
                 {contact.name} : {contact.number}
-                <button onClick={this.deletionHandler}>delete contact</button>
+                <button onClick={() => deletionHandler(contact.id)}>delete contact</button>
               </li>
             ) : null
           )}
         </ul>
       </>
     );
-  }
 }
 
 export default ContactList;

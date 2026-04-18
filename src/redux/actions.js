@@ -4,13 +4,12 @@ import { nanoid } from "nanoid";
 import { ACTION_TYPES } from "./constants";
 
 // Return type,payload
-export const addContact = text => {
+export const addContact = obj => {
   return {
     type: ACTION_TYPES.add,
     payload: {
       id: nanoid(),
-      completed: false,
-      text,
+      ...obj
     },
   };
 };
@@ -22,9 +21,9 @@ export const removeContact = id => {
   };
 };
 
-export const filterContact = id => {
+export const filterContact = query => {
   return {
     type: ACTION_TYPES.filter,
-    payload: id
+    payload: query
   };
 };

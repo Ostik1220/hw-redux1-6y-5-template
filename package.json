@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://ostik1220.github.io/hw-y6-5-react-12-template/",
   "dependencies": {
+    "@redux-devtools/extension": "^4.0.0",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",

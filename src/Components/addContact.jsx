@@ -1,34 +1,28 @@
-import { Component } from "react";
+import { useDispatch } from "react-redux";
+import { addContact } from "../redux/actions";
 
-class AddContact extends Component {
-  state = {
-    name: "",
-    number: "",
-  };
 
-  collectingInput = (event) => {
+const AddContact = () => {
+  // state = {
+  //   name: "",
+  //   number: "",
+  // };
+    const dispatch = useDispatch()
+
+  const collectingInput = (event) => {
     event.preventDefault();
-    this.setState({
-      name: event.target.elements.name.value,
-      number: event.target.elements.number.value,
-    });
-    console.log(this.state);
+    const name = event.target.elements.name.value;
+    const number = event.target.elements.number.value
+   dispatch(addContact({name, number}))
     event.target.elements.name.value = "";
     event.target.elements.number.value = "";
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (
-      prevState.name !== this.state.name ||
-      prevState.number !== this.state.number
-    ) {
-      this.props.infoCollect(this.state);
-    }
-  }
+  
 
-  render() {
+
     return (
-      <form onSubmit={this.collectingInput}>
+      <form onSubmit={collectingInput}>
         <h2>Add new contact</h2>
         <input
           type="text"
@@ -47,7 +41,6 @@ class AddContact extends Component {
         <button type="submit">Add contact</button>
       </form>
     );
-  }
 }
 
 export default AddContact;
