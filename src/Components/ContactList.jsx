@@ -1,12 +1,12 @@
 import { Component } from "react";
-import { getContacts, getFilter } from "../redux/selectors";
 import { useDispatch, useSelector } from "react-redux";
-import { filterContact, removeContact } from "../redux/actions";
+import { getContacts } from "../redux/contacts/contactsSelector";
+import { getFilter } from "../redux/filter/filterSelector"; 
+import { changeFilter } from "../redux/filter/filterSlice";
+import { removeContact } from "../redux/contacts/contactsSlice";
 
 const ContactList = () => {
-  // state = {
-  //   filter: "",
-  // };
+
 
   const contacts =  useSelector(getContacts);
 const filter = useSelector(getFilter)
@@ -16,7 +16,7 @@ const filter = useSelector(getFilter)
   
 
   const valueCollector = (event) => {
-    dispatch(filterContact(event.target.value))
+    dispatch(changeFilter(event.target.value))
   };
 
   const deletionHandler = (contactId) => {

@@ -4,7 +4,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: green;
+  background-color: #A60000;
 }
 
 code {
@@ -14,7 +14,7 @@ code {
 
 ul {
   list-style: none;
-  background-color: orange;
+  background-color: #009999;
   padding: 0;
   margin: 0;
   display: flex;
@@ -22,16 +22,16 @@ ul {
   column-gap: 100px;
   row-gap: 20px;
   justify-content: center;
+  flex-direction: column;
 }
 
 .App {
-  text-align: center;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 button{
   outline: none;
-  background-color: darkgoldenrod;
+  background-color: #006363;
   color: white;
   border: none;
   border-radius: 4px;
@@ -40,7 +40,7 @@ button{
 
 input{
   outline: none;
-  background-color: rgb(23, 57, 0);
+  background-color: #33CCCC;
   color: rgb(255, 255, 255);
   border: none;
   padding: 5px;

@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import "./App.css";
 import AddContact from "./Components/addContact";
 import ContactList from "./Components/ContactList";
-import { getContacts } from "./redux/selectors";
+// import { getContacts } from "./redux/selectors";
 
 const App = () => {
   // state = {

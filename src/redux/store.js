@@ -1,7 +1,12 @@
 // store.js: Точка збору редаксу.
-import { createStore } from "redux";
 import { devToolsEnhancer } from "@redux-devtools/extension";
-import contactsReducer from "./reducer";
+import { configureStore } from "@reduxjs/toolkit";
+import { contactsReducer } from "./contacts/contactsSlice";
+import { filterReducer } from "./filter/filterSlice";
 
-const enhancer = devToolsEnhancer();
-export const store = createStore(contactsReducer, enhancer);
+export const store = configureStore({
+  reducer: {
+    contacts: contactsReducer,
+    filter: filterReducer,
+  },
+});
