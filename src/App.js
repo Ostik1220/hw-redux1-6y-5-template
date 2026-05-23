@@ -2,6 +2,8 @@ import { useDispatch } from "react-redux";
 import "./App.css";
 import AddContact from "./Components/addContact";
 import ContactList from "./Components/ContactList";
+import { useEffect } from "react";
+import { fetchContacts } from "./redux/contacts/contactsOperation";
 // import { getContacts } from "./redux/selectors";
 
 const App = () => {
@@ -11,7 +13,9 @@ const App = () => {
   //   filter: "",
   // };
   const dispatch = useDispatch();
-
+useEffect(() => {
+    dispatch(fetchContacts());
+  }, []);
 
   // const collector = (newContact) => {
   //   if (

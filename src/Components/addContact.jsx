@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
-import { addContact } from "../redux/contacts/contactsSlice";
+// import { addContact } from "../redux/contacts/contactsSlice";
+import { addContact } from "../redux/contacts/contactsOperation";
 
 
 const AddContact = () => {
@@ -13,7 +14,7 @@ const AddContact = () => {
     event.preventDefault();
     const name = event.target.elements.name.value;
     const number = event.target.elements.number.value
-   dispatch(addContact({name, number}))
+   dispatch(addContact({name, number}))  
     event.target.elements.name.value = "";
     event.target.elements.number.value = "";
   };
