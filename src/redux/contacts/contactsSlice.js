@@ -1,16 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchContacts, addContact, deleteContact } from "./contactsOperation";
+import { createEntityAdapter } from '@reduxjs/toolkit'
 
 
-
+const contactsAdapter = createEntityAdapter();
 const contactsSlice = createSlice({
     name: "contacts",
 
- initialState: {
+ initialState: contactsAdapter.getInitialState({
     loading: false,
     error: null,
     contacts: [],
-  },
+  }),
 
     // reducers: {
     //     addContact: {
@@ -47,7 +48,7 @@ builder.addCase(fetchContacts.pending, (state) => {
 
     builder.addCase(fetchContacts.fulfilled, (state, action) => {
       state.loading = false;
-      state.contacts = action.payload;
+      contactsAdapter.setAll(state, action.payload);
     });
 
     builder.addCase(fetchContacts.rejected, (state, action) => {
@@ -62,7 +63,7 @@ builder.addCase(fetchContacts.pending, (state) => {
 
     builder.addCase(addContact.fulfilled, (state, action) => {
       state.loading = false;
-      state.contacts.push(action.payload);
+      contactsAdapter.addOne(state, action.payload);
     });
 
     builder.addCase(addContact.rejected, (state, action) => {
@@ -77,7 +78,7 @@ builder.addCase(fetchContacts.pending, (state) => {
 
     builder.addCase(deleteContact.fulfilled, (state, action) => {
       state.loading = false;
-      state.contacts = state.contacts.filter((contact) => contact.id !== action.payload);
+      contactsAdapter.removeOne(state, action.payload.id);
     });
 
     builder.addCase(deleteContact.rejected, (state, action) => {
@@ -88,6 +89,7 @@ builder.addCase(fetchContacts.pending, (state) => {
 
 
 });
-
+export const {selectAll, selectById, selectIds} = contactsAdapter.getSelectors(
+  (state) => state.todos)
 // export const { addContact, removeContact } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
