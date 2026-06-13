@@ -9,9 +9,8 @@ const contactsSlice = createSlice({
 
  initialState: contactsAdapter.getInitialState({
     loading: false,
-    error: null,
-    contacts: [],
-  }),
+    error: null
+    }),
 
     // reducers: {
     //     addContact: {
@@ -89,7 +88,7 @@ builder.addCase(fetchContacts.pending, (state) => {
 
 
 });
-export const {selectAll, selectById, selectIds} = contactsAdapter.getSelectors(
-  (state) => state.todos)
+export const {selectAll, selectById} = contactsAdapter.getSelectors(
+  (state) => state.contacts)
 // export const { addContact, removeContact } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
