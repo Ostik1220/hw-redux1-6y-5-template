@@ -1,51 +1,36 @@
-import { Component } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getContacts } from "../redux/contacts/contactsSelector";
-import { getFilter } from "../redux/filter/filterSelector"; 
+import { getFilter } from "../redux/filter/filterSelector";
 import { changeFilter } from "../redux/filter/filterSlice";
-// import { removeContact } from "../redux/contacts/contactsSlice";
-import { deleteContact } from "../redux/contacts/contactsOperation";
+import { ContactItem } from "./ContactItem";
 
 const ContactList = () => {
+  const dispatch = useDispatch();
 
+  const contacts = useSelector(getContacts);
 
-  const contacts =  useSelector(getContacts);
-const filter = useSelector(getFilter)
-  console.log(contacts, filter)
-
-    const dispatch = useDispatch();
-  
+  const filter = useSelector(getFilter);
 
   const valueCollector = (event) => {
-    console.log(event.target.value)
-    dispatch(changeFilter(event.target.value))
+    console.log(event.target.value);
+    dispatch(changeFilter(event.target.value));
   };
 
-  const deletionHandler = (contactId) => {
-    console.log(contactId);
-    dispatch(deleteContact(contactId));
-  };
-
-    return (
-      <>
-        <input type="text" onChange={valueCollector} />
-        <ul>
-  {(filter === ""
-    ? contacts
-    : contacts.filter(contact =>
-        contact.name.toLowerCase().includes(filter.toLowerCase())
-      )
-  ).map(contact => (
-    <li key={contact.id}>
-      {contact.name}: {contact.number}
-      <button onClick={() => deletionHandler(contact.id)}>
-        delete contact
-      </button>
-    </li>
-  ))}
-</ul>
-      </>
-    );
-}
+  return (
+    <>
+      <input type="text" onChange={valueCollector} />
+      <ul>
+        {(filter === ""
+          ? contacts
+          : contacts.filter((contact) =>
+              contact.name.toLowerCase().includes(filter.toLowerCase()),
+            )
+        ).map((contact) => (
+          <ContactItem key={contact.id} contact={contact} />
+        ))}
+      </ul>
+    </>
+  );
+};
 
 export default ContactList;
