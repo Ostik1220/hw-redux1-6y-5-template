@@ -4,6 +4,7 @@ import AddContact from "./Components/addContact";
 import ContactList from "./Components/ContactList";
 import { useEffect } from "react";
 import { fetchContacts } from "./redux/contacts/contactsOperation";
+import {AuthForm} from "./Components/AuthForm"
 // import { getContacts } from "./redux/selectors";
 
 const App = () => {
@@ -36,6 +37,7 @@ useEffect(() => {
     return (
       <div className="App">
         <h1>Phonebook</h1>
+        <AuthForm />
         <AddContact/>
         <h2>contacts</h2>
         <ContactList
