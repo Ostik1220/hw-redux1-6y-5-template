@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const baseUrl = "http://localhost:3001"
+const baseUrl = "https://my-json-server.typicode.com/Ostik1220/hw-6y-7-6y-5-template"
 
 const getAuthHeader = (token) => {
   return { Authorization: `Bearer ${token}` };
