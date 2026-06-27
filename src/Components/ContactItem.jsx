@@ -9,10 +9,13 @@ export const ContactItem = ({ contact }) => {
   };
 
   return (
-    <li key={contact.id}>
-      {contact.name}: {contact.number}
-      <button onClick={() => deletionHandler(contact.id)}>
-        delete contact
+    <li className="contact-item">
+      <div>
+        <strong>{contact.name}</strong>
+        <span>{contact.number}</span>
+      </div>
+      <button className="danger-btn" onClick={() => deletionHandler(contact.id)}>
+        Delete
       </button>
     </li>
   );

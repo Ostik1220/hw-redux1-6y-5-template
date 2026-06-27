@@ -18,16 +18,19 @@ import { createUser, loginUser, logOutUser } from "./usersOperation";
       console.log(action)
       state.token = action.payload.accessToken
       state.user = action.payload.user
+      state.login = true
     }); 
 builder.addCase(loginUser.fulfilled, (state, action) => {
       console.log(action)
       state.token = action.payload.accessToken
       state.user = action.payload.user
+
     });
   builder.addCase(logOutUser.fulfilled, (state, action) => {
       console.log(action)
       state.token = ""
-      state.user = { email: null, id: null }
+      state.user = { email: null, id: null}
+      state.login = false
     });}})
 
     export const userReducer = userSlice.reducer

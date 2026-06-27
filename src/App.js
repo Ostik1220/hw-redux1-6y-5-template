@@ -2,8 +2,7 @@ import "./App.css";
 import { HeroPage } from "./pages/HeroPage";
 import { WelcomingPage } from "./pages/WelcomingPage";
 // import { getContacts } from "./redux/selectors";
-import { Route } from "react-router-dom";
-import { Routes } from "react-router";
+import { Routes, Route } from "react-router-dom";
 import { PrivateRoute } from "./utilities/routes/privateRoute";
 import { PublicRestrictedRoute } from "./utilities/routes/publicRoute";
 
@@ -27,7 +26,7 @@ const App = () => {
     return (
      <Routes>
        <Route path="/" element={<PublicRestrictedRoute restricted><WelcomingPage /></PublicRestrictedRoute>} />
-       <Route path="/list" element={<PrivateRoute><HeroPage /></PrivateRoute>} />
+       <Route path="/contacts" element={<PrivateRoute><HeroPage /></PrivateRoute>} />
     </Routes>
     );
 }
