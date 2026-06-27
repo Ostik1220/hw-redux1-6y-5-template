@@ -4,7 +4,7 @@ export const createUser = createAsyncThunk(
   "users/createUser",
   async (obj, thunkAPI) => {
     try {
-      const response = await axios.post("https://my-json-server.typicode.com/Ostik1220/hw-6y-7-6y-5-template/register", {
+      const response = await axios.post("http://localhost:3001/register", {
         email: obj.email,
         password: obj.password,
       });
@@ -21,7 +21,7 @@ export const loginUser = createAsyncThunk(
   "users/loginUser",
   async (obj, thunkAPI) => {
     try {
-      const response = await axios.post("https://my-json-server.typicode.com/Ostik1220/hw-6y-7-6y-5-template/login", {
+      const response = await axios.post("http://localhost:3001/login", {
         email: obj.email,
         password: obj.password,
       });

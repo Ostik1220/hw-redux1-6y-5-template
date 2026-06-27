@@ -1,23 +1,13 @@
-import { useDispatch } from "react-redux";
 import "./App.css";
-import AddContact from "./Components/addContact";
-import ContactList from "./Components/ContactList";
-import { useEffect } from "react";
-import { fetchContacts } from "./redux/contacts/contactsOperation";
-import {AuthForm} from "./Components/AuthForm"
+import { HeroPage } from "./pages/HeroPage";
+import { WelcomingPage } from "./pages/WelcomingPage";
 // import { getContacts } from "./redux/selectors";
+import { Route } from "react-router-dom";
+import { Routes } from "react-router";
+import { PrivateRoute } from "./utilities/routes/privateRoute";
+import { PublicRestrictedRoute } from "./utilities/routes/publicRoute";
 
 const App = () => {
-  // state = {
-  //   name: "",
-  //   number: "",
-  //   filter: "",
-  // };
-  const dispatch = useDispatch();
-useEffect(() => {
-    dispatch(fetchContacts());
-  }, []);
-
   // const collector = (newContact) => {
   //   if (
   //     this.state.contacts.find((contact => contact.name === newContact.name))
@@ -35,14 +25,10 @@ useEffect(() => {
 
 
     return (
-      <div className="App">
-        <h1>Phonebook</h1>
-        <AuthForm />
-        <AddContact/>
-        <h2>contacts</h2>
-        <ContactList
-        />
-      </div>
+     <Routes>
+       <Route path="/" element={<PublicRestrictedRoute restricted><WelcomingPage /></PublicRestrictedRoute>} />
+       <Route path="/list" element={<PrivateRoute><HeroPage /></PrivateRoute>} />
+    </Routes>
     );
 }
 
