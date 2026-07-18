@@ -2,7 +2,7 @@
   "name": "hw-react-1012",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ostik1220.github.io/hw-6y-7-6y-5-template/",
+  "homepage": "https://github.com/Ostik1220/hw-redux1-6y-5-template",
   "dependencies": {
     "@redux-devtools/extension": "^4.0.0",
     "@reduxjs/toolkit": "^2.11.2",
